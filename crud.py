@@ -21,9 +21,9 @@ def read_users():
     for(id, nom, email) in cursor:
         print(f"ID: {id}, NOM: {nom}, Email: {email}")
 
-def update_user(id, email):
+def update_user(id, nom, email):
     cursor = mydb.cursor()
-    cursor.execute("UPDATE utilisateurs SET email=%s WHERE id=%s", (email, id))
+    cursor.execute("UPDATE utilisateurs SET nom=%s, email=%s WHERE id=%s", (nom, email, id))
     mydb.commit()
 
 def delete_user(id):
@@ -54,8 +54,9 @@ def menu():
             read_users()
         elif choix == '3':
             id = input("Entrez l'ID de l'utilisateur à mettre à jour : ")
+            nom = input("Entrez le nouveau nom : ")
             email = input("Entrez le nouvel email : ")
-            update_user(id, email)
+            update_user(id, nom, email)
         elif choix == '4':
             id = input("Entrez l'ID de l'utilisateur à supprimer : ")
             delete_user(id)

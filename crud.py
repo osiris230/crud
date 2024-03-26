@@ -31,9 +31,14 @@ def delete_user(id):
     cursor.execute("DELETE FROM utilisateurs WHERE id = %s", (id,))
     mydb.commit()
 
+def saisie():
+    nom=input("Entrez votre nom : ")
+    email=input("Entrez votre adresse e-mail : ")
+    create_user(nom, email)
 
 
 #create_user("John Dope", "john.dope@example.com")
-#read_users()
+read_users()
 #update_user(2, 'emicheldev@gmail.com')
 #delete_user(2)
+#saisie()
